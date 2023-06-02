@@ -1,0 +1,145 @@
+
+for maven project
+
+1- first check java is installed or not and if not the use below command:
+
+yum install java-1.8.0-openjdk-devel
+
+2- downloads maven binary file from apache maven official doc.example given below:
+				
+wget https://dlcdn.apache.org/maven/maven-3/3.9.2/binaries/apache-maven-3.9.2-bin.tar.gz
+
+3- now you have to untar the file under any foler and copy untar file under any folder but hear we are using /opt folder:
+
+tar -xvzf apache-maven-3.9.2-bin.tar.gz -C /opt
+
+4- now you have to set the environment and path 
+
+export M2_HOME=/opt/apache-maven-3.9.2
+
+chk env also if you wantby (#env) command
+
+export PATH=$PATH:$M2_HOME/bin
+
+----------------------------------
+now mvn ready to use you can check mvn version
+
+mvn --version
+
+now you can use project structure given by manven by below given command:
+
+mvn archetype:generate
+
+you can create sample JAR project structure
+
+www.cloudbots.com
+
+then build the file using below command :
+
+before compile you can validate alos
+mvn validate
+
+if validate success go for build 
+
+mvn compile
+mvn test
+mvn package
+
+you can check maven local repo
+
+cd ~/.M2
+do long list (ll) and check
+
+
+IF you want to Run jar file the use below 
+
+(java -cp target/cloudboats_jarproj-1.0-SNAPSHOT.jar com.cloudboats.www.App)
+
+=====================================================================================================================
+
+
+FOR TOMCAT
+
+1- check java is install or not if not then install 
+
+yum install java-1.8.0-openjdk-devel
+
+2- download tomcat by binary method 
+
+wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.89/bin/apache-tomcat-8.5.89.tar.gz
+
+3- you have to untar and copy under /opt folder 
+
+tar -xvzf apache-tomcat-8.5.89.tar.gz -C /opt
+
+4- tomcat is 3rd pary tool you can create user to use it and give admin previlage for same user
+
+useradd tomcat
+
+add password for same user 
+passwd tomcat
+
+
+if you required to change ownership of tomcat then change it
+
+chown -R tomcat:tomcat/opt/apache-tomcat-8.5.89
+
+now login as tomcat user with below command:
+
+#su - tomcat
+
+now you have to change some configuration under XML file to run tomcat application.
+
+open XML file under config folder i.e "/opt/apache-tomcat-8.5.89/conf"
+
+before do any changes copy XML file under same folder for any diff folder
+
+#cp tomcat-user.XML tomcat-user.XML.bkp
+
+now open XML file and add Role , username and  password.
+----------------------------------------------------------------
+By default, no user is included in the "manager-gui" role required
+  to operate the "/manager/html" web application.  If you wish to use this app,
+  you must define such a user - the username and password are arbitrary.
+
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcat-users>
+  <role rolename="manager-gui"/>
+  <user username="tomcatmgr" password="tomcatmgr" roles="manager-gui"/>
+  <role rolename="manager-script"/>
+  <user username="deploy" password="deploy" roles="manager-script"/>
+</tomcat-users>
+------------------------------------------------------------------
+ 
+now restart the tomcat application 
+ 
+# cd /opt/apache-tomcat-8.5.89/bin
+./startup.sh
+./shutdown.sh
+./startup.sh
+
+now open http://<host public ip>:8080
+
+now after deployment WAR file if you want to run the file then  you have to allow your tomcat to access from any machine uner "CATALINA_BASE"
+
+
+Go to #cd /opt/apache-tomcat-8.5.89/conf/Catalina/localhost
+
+then create one manager.xml file and use below command:
+<Context privileged="true" antiResourceLocking="false"
+          docBase="${catalina.home}/webapps/manager">
+          <Valve className="org.apache.catalina.valves.RemoteAddrValve" allow="^.*$" />
+        </Context>
+
+now again if you want to restart tomcat web application so you can restart.
+
+# cd /opt/apache-tomcat-8.5.89/bin
+./startup.sh
+./shutdown.sh
+./startup.sh
+
+=====================================================================================================================
+
+
+
+
