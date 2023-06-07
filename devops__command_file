@@ -142,5 +142,14 @@ now again if you want to restart tomcat web application so you can restart.
 =====================================================================================================================
 
 
+for ansible
+
+
+ansible is open source configuration management tool which help to automate application deployment and taks automation ad-hoc task-execution
+
+
+ansible are using ssh commuinication to communicate with client
+it will do parallel execution 
+
 
 
