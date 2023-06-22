@@ -151,5 +151,176 @@ ansible is open source configuration management tool which help to automate appl
 ansible are using ssh commuinication to communicate with client
 it will do parallel execution 
 
+ANSIBLE :
+
+#Ansible has been written in python 
+# It is configuration management tool 
+# it will do task automation
+# It will do app deployment 
+#Ansible master and client server will communicate with SSH communication
+#ansible maser will have INVENTORY file where all client ID address is mentioned for communication with client server
+# Path = /etc/ansible/
+
+How to install ansible:
+
+Ansible is written in python so check first python is install or not 
+
+python --version
+
+Install ansible using yum command 
+
+Yum install ansible -y
+
+If it will show error like this then install ansible2
+
+# amazon-linux-extras install ansible2
+
+=====================================================
+Failed to set locale, defaulting to C
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+amzn2-core                                                                                                                    | 3.7 kB  00:00:00     
+No package ansible available.
+Error: Nothing to do
+
+
+ansible is available in Amazon Linux Extra topic "ansible2"
+
+To use, run
+# sudo amazon-linux-extras install ansible2
+
+Learn more at
+https://aws.amazon.com/amazon-linux-2/faqs/#Amazon_Linux_Extras
+======================================================
+
+[defaults]
+
+# some basic default values...
+
+#inventory      = /etc/ansible/hosts
+#library        = /usr/share/my_modules/
+#module_utils   = /usr/share/my_module_utils/
+#remote_tmp     = ~/.ansible/tmp
+#local_tmp      = ~/.ansible/tmp
+#plugin_filters_cfg = /etc/ansible/plugin_filters.yml
+#forks          = 5
+#poll_interval  = 15
+#sudo_user      = root
+
+Create ansible user for better understanding
+
+Useradd  ansadmin
+Passwd ansadmin
+
+Now provide admin privileges to ansadmin user using visudo file
+
+{remove %wheel and add ansadmin}
+
+Now under (sshd_config )file provide  permit root login as yes for auth of client server so it will ask password whenever u will login as client 
+
+vim /etc/ssh/sshd_config 
+
+Change PERMIT ROOT LOGIN AS YES
+
+
+Now restart the service 
+
+#Service sshd restart
+
+Now login as ansadmin user
+
+Su - ansadmin
+
+Now Generate key 
+
+ssh_keygen
+
+Now if you want to give this key to client then copyit and 
+
+#ssh-copy-id (pub id of client)
+
+
+Now add client ip Under #inventory      = /etc/ansible/hosts
+
+
+#ansible  <target> -m <ping>
+
+Hear
+-m for module
+Ping is module
+
+#ansible  all -m ping
+
+[dev]
+13.233.42.63
+
+[qa]
+13.233.42.63
+
+[stage]
+13.233.42.63
+
+[prepro]
+13.233.42.63
+
+[prod]
+13.233.42.63
+
+
+#ansible dev -m ping
+
+Ping for dev and prod gp then
+#ansible  dev:prod -m ping
+
+If u want to check server memory performance 
+
+#ansible all -m shell -a "free -m"
+hear
+-a for append the command
+
+From how much time server is up and running 
+#ansible all -m shell -a "uptime"
+
+
+If u want to check how many module r available
+#ansible-doc -l
+ 
+For particular module:
+#ansible-doc -l | grep aws
+
+
+To transfer a file using ansible 
+Module name : copy
+#ansible all -m copy -a "src=source path dest=dest path"
+Ex:
+#ansible all -m copy -a "src=./hosts dest=/tmp"
+
+To download the file from client 
+#ansible all -m fetch -a "src=/client path dest=master path"
+
+
+How to create a file or directory using ansible 
+Module : file
+
+#ansible all -m file -a "path=/tmp/new.txt state=touch" 
+
+How to install package using ansible to all Client machine
+
+Module : Yum
+#ansible all -m yum -a " name=httpd state=present or latest"
+
+To become root user in ansible type -b in last 
+Ex:
+#ansible all -m yum -a "name=httpd state=present or latest" -b
+
+---
+ - hosts: all
+   become: yes
+   tasks:
+   - yum: name=php state=latest
+ 
+ - hosts: all
+   become: yes
+   tasks:
+   - yum: name=php state=latest 
 
 
