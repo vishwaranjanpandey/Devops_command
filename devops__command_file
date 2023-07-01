@@ -3,6 +3,76 @@ GIT Fifth TOKEN
 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
 ########################################
 
+GIT 6th Token
+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
+########################################
+#
+############
+GIT COMMANDS#
+############
+
+to keep track all the changes of each file manually it is not possible so will go with VCS(version controll system)
+
+GIT : To keep track of all the changes and commit done we use GIT
+GITHUB: GitHub is a web-based Git repository where you ca push all the changes and commit which you have done.
+
+to install git>>>>>>>>>>>>>>>>>
+
+yum install git -y 
+
+
+to check the modification you need to setup global parameter.
+
+1. git config --global user.name "name"
+2. git config --global user.email "email" 
+
+
+to check the global parameter 
+
+3. git config --list
+
+to initialize 
+
+4. git init
+
+now check status 
+
+5. git status
+
+now for example creation one file 
+
+7. vim test.java
+
+ now again check the status  
+
+8. git status( TO CHECK WHAT IS THE STATUS OF MY WORKING AREA )
+
+
+IN GIT 3 AREA WILL BE THERE 
+1. WORKING AREA : Where you will write your program or code 
+2. CACHE AREA/ STAGED AREA :  If you want to track the changes which you have done you need to add into staged area ( git add < file name > )
+3. LOCAL REPO AREA: If you want to upload final version of code into local repo git ( git commit -m " commit messages " )
+
+git add < file name >
+
+git commit -m " messages for commit "
+ 
+to check the commit status 
+
+ ( git log )
+
+if you want to discard the changes whatever you have done in working area then :
+
+git restore < file name >
+
+
+
+
+
+
+
+
+
 
 
 
