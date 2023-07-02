@@ -13,8 +13,9 @@ GIT COMMANDS#
 
 to keep track all the changes of each file manually it is not possible so will go with VCS(version controll system)
 
-GIT : To keep track of all the changes and commit done we use GIT
-GITHUB: GitHub is a web-based Git repository where you ca push all the changes and commit which you have done.
+GIT : git is local repo To keep track of all the changes and commit done we use GIT
+
+GITHUB: GitHub is a remote repo ... web-based Git repository where you ca push all the changes and commit which you have done.
 
 to install git>>>>>>>>>>>>>>>>>
 
@@ -46,7 +47,13 @@ now for example creation one file
  now again check the status  
 
 8. git status( TO CHECK WHAT IS THE STATUS OF MY WORKING AREA )
-
+---------------------------------------------------------------
+|Working area   | cache/Stage area    | local remote area      |                   
+|               |                     |                        |
+|               |                     |                        |
+|# git status   |# git add <file name>| # git commit -m "abc"  |
+|               |                     |                        |
+|               |                     |                        |
 
 IN GIT 3 AREA WILL BE THERE 
 1. WORKING AREA : Where you will write your program or code 
@@ -57,22 +64,139 @@ git add < file name >
 
 git commit -m " messages for commit "
  
-to check the commit status 
+to check the commit status >>>>>>>>>>>>>
 
  ( git log )
 
-if you want to discard the changes whatever you have done in working area then :
+if you want to discart the changes whatever you have done in working area then >>>>>>>>>>>>>
 
-git restore < file name >
+git restore < file name > ( discart the changes from working area ) 
 
-
-
-
+git remote --staged     ( remove from cache area )
 
 
 
+if you want to check latest changes previous version of the file >>>>>>>>>>
+
+git diff < commit id of firt version > .. < commit if od second version >
 
 
+
+How to filter log >>>>>>
+
+git log --oneline
+
+
+git log --since yyyy-mm-dd  ( check commit from last week or month ) 
+
+git log --until yyyy-mm-dd   ( check commit till perticular date )
+
+git log --since yyyy-mm-dd --oneline
+
+
+git log --since yyyy-mm-dd --until yyyy-mm-dd 
+
+git log --since yyyy-mm-dd --auther " vishwa.d "  ( check the log from perticular date for perticular auther vishwa.d ) 
+
+git log -5 ( check first 5 line )
+
+
+
+
+How to ignore the file >>>>>>>>>>>>>>>>>
+
+if you clone the repo and all type of file is available on the same directory like (.PYTHON .TXT  .NET  .JAVA)
+
+
+if it is (.java) then track it and ignore all other file >>>>>>>>>
+
+then you have to create one hidden file ( .gitignore ) 
+
+
+vim .gitignore
+
+ -----------------------------------------------------------------------
+|*.py   
+|*.txt  
+|*.net
+|!one.net  ( even though .net is ignore but trach this perticular file )
+|[aeiou]*.py { ignore the python file start with (aeiou) }
+-------------------------------------------------------------------------
+
+then do git add .
+git commit -m "abc " 
+
+ 
+How to rename the file in git >>>>>>>>>>>>>>>>>>>
+
+git mv < old file name > < new file name >
+
+
+HOW TO RESOLVE THE BUG ERROR ISSUE 
+
+step 1 >>>>>> Make a copy of existing code by creating new branch ( just create new branch your code will autometically copied )  
+
+step 2 >>>>>> fix the copy of the code ( jump into the new branch and do the changes and commit )
+
+step 3 >>>>>> test the copy code 
+
+step 4 >>>>>  merge the code with master 
+
+git branch < new branch name > ( to create the new branch or copy the master branch )
+
+git branch ( to view branch )
+
+git diff < master branch > .. < new branch name >
+
+
+
+How to jump inside new branch >>>>>>>>>>>>>>>>>>>>>>
+
+git checkout < new branch name >
+
+Now merge with master branch >>>>>>>>>>>>>>>>>>>>>>>
+
+So hear <master> branch is the target branch and < newly created branch > is the source branch ( bug 1)
+
+git checkout master 
+
+
+git merge bug 1 ( hear bug 1 is the newly created branch )
+
+
+
+How to rename the branch ????>>>>>>>>>>.
+
+git branch -m < old branch name > < new branch name >
+
+
+
+How to delete the branch ????????>>>>>>>>>>.
+
+Before deleting branch you must go out of the branch then do delete 
+
+git branch -d < branch name >
+
+
+
+HOW TO DOWNLOAD THE CONTANT FROM REMOTE ??
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
 
 
 
