@@ -181,24 +181,42 @@ git branch -d < branch name >
 
 HOW TO DOWNLOAD THE CONTANT FROM REMOTE ??
 
+two ways to download the contant 1.first fetch then merge  2. pull
 
 
+Before download the contant from remote you need to check and establish communication between remote and local repo.          
 
 
+git remote ( to check is there any communication from remote or not )
+
+git remote -v ( details about remote repo )    
+
+to add remote repo  >>>>>>>>>>>>>>>>>>>>>>>>>
+
+git remote add origin < url >
+
+After adding remote repo you can fetch and push the code if you check ( git remote -v )
+
+git fetch    ( the moment you enter git fetch then the file will not directly add to local repo the file will come under local remote repo so
+
+               you need to merge the file )
+
+git checkout < target branch >  ( before merge you have to be in target branch )
+
+git merge < source branch name > ( now you are already in target branch so just merge with source branch )
 
 
+If you want to upload/Push the file from local repo to remote repo >>>>>>>>>>>>>>>>>
 
 
+git push -u origin master 
 
 
+if you want to clone the file 
 
- 
+git clone < url > 
 
-
-
- 
-
-
+=================================================================================================================================================================================
 
 for maven project
 
@@ -256,7 +274,7 @@ IF you want to Run jar file the use below
 
 (java -cp target/cloudboats_jarproj-1.0-SNAPSHOT.jar com.cloudboats.www.App)
 
-=====================================================================================================================
+=========================================================================================================================================================================================
 
 
 FOR TOMCAT
@@ -340,7 +358,80 @@ now again if you want to restart tomcat web application so you can restart.
 ./startup.sh
 
 
-=====================================================================================================================
+=======================================================================================================================================================================================
+
+#####################################
+# Jenkin
+#####################################
+
+It is a integration and deploynment tool which help to integrate every environment tool in your project 
+
+
+
+if tomacat already install in then login as tomcat user 
+
+su - tomcat 
+
+wget https://get.jenkins.io/war-stable/2.346.1/jenkins.war 
+
+now copy jenkin.war into webapps folder 
+
+cp jenkin.war /opt/apache-tomcat-8.5.89/webapps
+
+now open jenkin.war file 
+
+install jenking with suggested plugin and finish 
+
+
+how to install plugins in jenkins
+
+>>>>>> MAVEN INTEGRATION for maven 
+>>>>>> from  global configuration tool configure the maven plugin and set HOME_PATH 
+NAME :  MAVEN_HOME
+PATH : /opt/apache-maven-3.9.1 
+
+and save it for maven integration 
+
+now you can create
+
+COMPILE JOB
+TEST JOB 
+PACKAGE JOB
+
+
+IF YOU WANT TO RUN ALL JOB IN SEQUENCE THEN SELECT THE OPTION 
+
+" Build after another project are build "
+
+IF YOU WANT TO VIEW ALL JOB IN PIPELINE VIEW THEN INSTALL PLUGIN CALLED AS 
+
+" Build pipeline "
+
+After package job done and if you want to deploy your WAR file into the TOMCAT then 
+
+need to download  " DEPLOY TO CONTAINER " plugin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 for ansible
