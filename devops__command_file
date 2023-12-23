@@ -10,10 +10,29 @@ GIT 7th Token
 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
 
 
+GIT 9th Token 
+
+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
 
 
 ########################################
-#
+
+
+What is SCP ??
+
+scp (secure copy ) is command in linux to copy files between servers in secure way and between local host and remote host.
+
+COPYING FROM MACHINE TO EC2 INSTANCE
+
+scp -i <pem file> <file_to_copy_from_local> ec2-user@<ip_address>:<location_in_the_instance>
+ex:
+sudo scp -i 1st_keypair.pem 1st_keypair.pem ec2-user@ec2-43-205-120-21.ap-south-1.compute.amazonaws.com:/home/ec2-user
+
+COPY FROM EC2 INSTANCE TO LOCAL MACHINE
+
+scp -i <pem_file> ec2-user@<ip_address>:<file_to_copy_from_instance> <destination_in_local>
+
+
 ############
 GIT COMMANDS#
 ############
