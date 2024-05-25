@@ -86,20 +86,35 @@ IN GIT 3 AREA WILL BE THERE
 2. CACHE AREA/ STAGED AREA :  If you want to track the changes which you have done you need to add into staged area ( git add < file name > )
 3. LOCAL REPO AREA: If you want to upload final version of code into local repo git ( git commit -m " commit messages " )
 
-git add < file name >
+git add < file name >  
 
 git commit -m " messages for commit "
  
 to check the commit status >>>>>>>>>>>>>
+git log
 
- ( git log )
-
+NEGATIVE CASES:
+CASE 1:
 if you want to discart the changes whatever you have done in working area then >>>>>>>>>>>>>
 
 git restore < file name > ( discart the changes from working area ) 
 
+CASE 2:
+if we added changes using git add then 
 git remote --staged     ( remove from cache area )
 
+CASE 3:
+
+if we added changes to staging aread (didn't commit) and again we done some changes in staging area and that staging file
+is ready to commit and ready to add 
+
+git restore --worktree <file name>    (restore the changes form staging area )
+
+CASE 4:
+if we did commit wrong files
+
+git reset --soft HEAD^  (go back to 1 previous commit with deleting changes)
+git reset --hard HEAD^ (go back to 1 previous commit with deleting all changes)
 
 
 if you want to check latest changes previous version of the file >>>>>>>>>>
