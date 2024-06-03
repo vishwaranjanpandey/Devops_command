@@ -37,6 +37,20 @@ scp -i <pem_file> ec2-user@<ip_address>:<file_to_copy_from_instance> <destinatio
 GIT COMMANDS#
 ############
 
+what is diff between git and gitHb??
+what is difference between repository and branch in git?
+what is difference between git Push and Git pull?
+what is difference between git pull and git fetch command?
+what is difference between git clone and git remote?
+what is difference between git diff and git status?
+what is difference between git merge and git rebase?
+how can you fix broken commit?
+what happens when .git directory deleted?
+what is difference between staging area and Indexing ?
+what does the command git config do?
+
+
+
 to keep track all the changes of each file manually it is not possible so will go with VCS(version controll system)
 
 GIT : git is local repo To keep track of all the changes and commit done we use GIT
