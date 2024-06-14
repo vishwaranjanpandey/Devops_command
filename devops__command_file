@@ -41,6 +41,29 @@ what is diff between git and gitHb??
 what is difference between repository and branch in git?
 what is difference between git Push and Git pull?
 what is difference between git pull and git fetch command?
+
+The Git Fetch command is used to fetch all changes from the remote repository to the local repository. It doesn’t make any changes to the current working directory.
+It stores all the changes in a separate branch called the remote-tracking branch. git merge or git rebase command is used to merge these changes into our current working directory.
+How to Use Git Fetch?
+Step 1: Let us create a file called demo.txt with “Hello Geeks” content inside it initialize the directory to a git repository and push the changes to a remote repository.
+
+git init
+git add <Filename>
+git commit -m <Commit Message>
+git remote add origin <Link to your remote repository>
+git push origin <branch name>
+Now, we have my demo.txt in the remote repository. 
+The local and the remote repositories are now in sync and have the same content at both places. Let’s now update our demo.txt in the remote repository. 
+Step 2: We will update our demo.txt remotely.
+Now since we have updated our demo.txt remotely, let’s bring the changes to our local repository. Our local repository has only 1 commit while the remote repository now has 2 commits.
+Step 3: Let’s use the git fetch command to see in the local repository whether we have a change in the remote repository or not. Before that let’s use the git log command to see our previous commits.
+We can see that after using git fetch we get the information that there is some commit done in the remote repository.
+Step 4: To merge these changes into our local repository, we need to use the git merge origin/<branch name> command. 
+
+What is Git Pull?
+Git Pull command is used to fetch all changes from the remote repository to the current working directory. It automatically try to merge or rebase them into our current working directory. It is the combination of git fetch and git merge or git rebase. It can generate merge conflicts if there are conflict changes between our local and remote branches.
+git pull = git fetch + git merge
+
 what is difference between git clone and git remote?
 what is difference between git diff and git status?
 what is difference between git merge and git rebase?
