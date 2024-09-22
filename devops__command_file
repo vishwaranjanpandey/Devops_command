@@ -867,7 +867,8 @@ To view the current hostname, run the command below:
  wget https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0250EN-SkillsNetwork/labs/Bash%20Scripting/usdoi.txt
 
 
- File and folder archiving and compression
+ File and folder archiving and compression............
+
  The tar command allows you to pack multiple files and directories into a single archive file.
 
  The following command creates an archive of the entire /bin directory and writes the archive to a single file named bin.tar.
@@ -891,3 +892,10 @@ To view the current hostname, run the command below:
 
  The following command creates a zip file named config.zip consisting of all the files with extension .conf in the /etc directory.
  zip config.zip /etc/*.conf
+
+
+
+
+
+
+    
