@@ -829,7 +829,7 @@ Copied!
 -d "," tells the command that the delimiter is a comma, and -f2 tells it to extract the second field.
 
 Merge text files line-by-line, aligned as columns
-paste
+paste 
 
 Use the paste command to merge lines of multiple files together.
 
@@ -848,9 +848,14 @@ paste -d "," zoo.txt zoo_ages.txt
 
 
 Linux Networking command...... 
-
+To view the current hostname, run the command below:
  hostname  
+ You can use the -i option to view the IP address of the host:
  hostname -i
+ To display the configuration of all network interfaces of your system, enter:
  ifconfig 
+ Test connectivity to a host
  ping www.google.com
+ If you want to ping only a limited number of times, use -c option.
+ ping -c 5 www.google.com
 
