@@ -859,3 +859,35 @@ To view the current hostname, run the command below:
  If you want to ping only a limited number of times, use -c option.
  ping -c 5 www.google.com
 
+ Transfer data from a server
+ You can use curl to access the file at the following URL and display the file's contents on your screen:
+ curl https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0250EN-SkillsNetwork/labs/Bash%20Scripting/usdoi.txt
+
+ One unique feature of wget is that it can recursively download files at a URL.
+ wget https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0250EN-SkillsNetwork/labs/Bash%20Scripting/usdoi.txt
+
+
+ File and folder archiving and compression
+ The tar command allows you to pack multiple files and directories into a single archive file.
+
+ The following command creates an archive of the entire /bin directory and writes the archive to a single file named bin.tar.
+
+ The options used are as follows:
+
+ Option	Description
+ -c	Create new archive file
+ -v	Verbosely list files processed
+ -f	Archive file name
+
+ tar -cvf bin.tar /bin
+ To see the list of files in the archive, use the -t option:
+ tar -tvf bin.tar
+ 
+ To untar the archive or extract files from the archive, use the -x option:
+ tar -xvf bin.tar
+
+ Package and compress archive files
+ The zip command allows you to compress files.
+
+ The following command creates a zip file named config.zip consisting of all the files with extension .conf in the /etc directory.
+ zip config.zip /etc/*.conf
