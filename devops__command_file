@@ -814,6 +814,43 @@ service nagios restart
 
 added last line 
 
+Extract fields from lines of text
+
+The cut command can also be used to extract a field from a delimited file.
+To demonstrate this, start by downloading and taking a look at the following comma-separated file:
+
+wget https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-LX0117EN-SkillsNetwork/labs/v4_new_content/labs/names_and_numbers.csv
+cat names_and_numbers.csv
+Copied!
+Now you can extract just the phone numbers for each person listed in the file using the -d (delimiter) and f (field) options as follows:
+
+cut -d "," -f2 names_and_numbers.csv
+Copied!
+-d "," tells the command that the delimiter is a comma, and -f2 tells it to extract the second field.
+
+Merge text files line-by-line, aligned as columns
+paste
+
+Use the paste command to merge lines of multiple files together.
+
+Download the following file:
+
+wget https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-LX0117EN-SkillsNetwork/labs/module%201/zoo_ages.txt
+Copied!
+Then use the paste command to view the two files merged together, line-by-line, as columns delimited by a Tab character:
+
+paste zoo.txt zoo_ages.txt
+Copied!
+Try changing the delimiter. Instead of the default Tab delimiter, you can specify a comma , as follows:
+
+paste -d "," zoo.txt zoo_ages.txt
 
 
+
+Linux Networking command...... 
+
+ hostname  
+ hostname -i
+ ifconfig 
+ ping www.google.com
 
