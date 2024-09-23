@@ -1,0 +1,20 @@
+ Variable>>>>>>>>
+ Place given to the memory in which a value is store 
+ Define a variable:
+ variable_name=value  ( if value is srting then it must be in quot"" and if value is number then it does't required "" )
+ 
+ How to retrive variable??
+ $variable_name
+ Variable Type >>>>>
+ 1 . Local Variable ( you can store value inside the shell script file and run the script )
+ 2 . Environment Variable ( you can store the variable as an envirenment variable and run the script)
+
+ Some special variable ::
+  
+  Variable           Description
+     $0            Return the Name of the script
+     $n            Command line argument, n is a value from 1-9
+     $#            Return total number of argument 
+     $?            Return the axit status of the last command 
+     $$            Return the process ID of the script
+     shift         Number of argument are reduced each time as the shift command is execute
