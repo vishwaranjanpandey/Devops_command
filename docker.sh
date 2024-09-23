@@ -87,6 +87,26 @@ if [ "${oldImages}" != "" ]; then
 else
         echo  "\n == No Docker dangaling Images to delete == \n"
 fi                       
+echo  "Step 5. Clean up unused docker volumes"
+unUsedVolumes=$($DOCKER volume ls -qf dangling=true)
+if [ "$unUsedVolumes" != "" ]; then
+        for uVolumes in ${unUsedVolumes}
+        do
+               echo $uVolumes
+                if [ $DRYRUN -eq 0 ]; then
+                  ${DOCKER} rmi -f ${uVolumes} 
+                   if [ $? -eq 0 ]; then
+                        echo "\n - Docker volume with VolumeId: ${uVolumes} Delted Successfully \n" 
+                   else
+                        echo "\n!! Error while deleting Docker volume with VolumeId: ${uVolumes} !! \n" 
+                   fi
+                fi
+        done
+else
+        echo  "\n== No Docker volumes to delete =="
+fi
+
+echo "\n====== END OF SCRIPT  ====== \n\n"
 
    
 
