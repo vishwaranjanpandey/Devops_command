@@ -18,3 +18,22 @@
      $?            Return the axit status of the last command 
      $$            Return the process ID of the script
      shift         Number of argument are reduced each time as the shift command is execute
+
+
+ How to debug in shell scripting 
+  Set -vx  in the starting of the file after shebang line  
+  (v is for verbose and x is for debugging)
+  
+
+ Basic Operator >>>>>
+
+  1 . Arithmetic Operator 
+  2 . Relational Operator
+  3 . Boolean Operator 
+  4 . String Operator 
+  5 . File Test Operator
+
+
+
+
+  
