@@ -192,3 +192,7 @@ Return your user name:
  Download file from a URL:
  1 . wget  <url>
 
+ Some Basic command:
+  1. hostname 
+  2. hostnamectl  ( to check about machine configuration)
+  3. apt-get remove <pkg name> .  ( to uninstall pkg)
