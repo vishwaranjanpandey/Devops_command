@@ -1,0 +1,293 @@
+  
+
+
+  #ansible is open source configuration management tool which help to automate application deployment and taks automation ad-hoc task-execution
+
+
+  #ansible are using ssh commuinication to communicate with client
+  #it will do parallel execution 
+
+  ANSIBLE :
+
+  #Ansible has been written in python 
+  # It is configuration management tool 
+  # it will do task automation
+  # It will do app deployment 
+  #Ansible master and client server will communicate with SSH communication
+  #ansible master will have INVENTORY file where all client ID address is mentioned for communication with client server
+  # Path = /etc/ansible/
+
+  How to install ansible:
+
+  #Ansible is written in python so check first python is install or not 
+
+ #python --version
+
+#  Install ansible using yum command 
+
+#  Yum install ansible -y
+
+#  If it will show error like this then install ansible2
+
+# amazon-linux-extras install ansible2
+
+#  =====================================================
+# Failed to set locale, defaulting to C
+#  Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+#  amzn2-core                                                                                                                    | 3.7 kB  00:00:00     
+#  No package ansible available.
+  Error: Nothing to do
+
+
+#  ansible is available in Amazon Linux Extra topic "ansible2"
+
+#  To use, run
+# sudo amazon-linux-extras install ansible2
+
+#  Learn more at
+# https://aws.amazon.com/amazon-linux-2/faqs/#Amazon_Linux_Extras
+#  ======================================================
+
+#  [defaults]
+
+  # some basic default values...
+
+  #inventory      = /etc/ansible/hosts
+  #library        = /usr/share/my_modules/
+  #module_utils   = /usr/share/my_module_utils/
+  #remote_tmp     = ~/.ansible/tmp
+  #local_tmp      = ~/.ansible/tmp
+  #plugin_filters_cfg = /etc/ansible/plugin_filters.yml
+  #forks          = 5
+  #poll_interval  = 15
+  #sudo_user      = root
+
+  #  Create ansible user for better understanding
+
+  # Useradd  ansadmin
+  # Passwd ansadmin
+
+  # Now provide admin privileges to ansadmin user using visudo file
+
+  #{remove %wheel and add ansadmin}
+
+  #Now under (sshd_config )file provide  permit root login as yes for auth of client server so it will ask password whenever u will login as client 
+
+  # vim /etc/ssh/sshd_config 
+
+  # Change PERMIT ROOT LOGIN AS YES
+ 
+
+  # Now restart the service 
+
+  # Service sshd restart
+
+  # Now login as ansadmin user
+
+  # Su - ansadmin
+
+  # Now Generate key 
+
+  # ssh_keygen
+
+  # Now if you want to give this key to client then copyit and 
+
+  #ssh-copy-id (pub id of client)
+
+
+  #Now add client ip Under #inventory      = /etc/ansible/hosts
+
+
+  #ansible  <target> -m <ping>
+
+  Hear
+  -m for module
+  Ping is module
+
+  #ansible  all -m ping
+
+  [dev]
+  13.233.42.63
+
+  [qa]
+  13.233.42.63
+
+  [stage]
+  13.233.42.63
+
+  [prepro]
+  13.233.42.63
+
+  [prod]
+  13.233.42.63
+
+
+  #ansible dev -m ping
+
+  Ping for dev and prod gp then
+  #ansible  dev:prod -m ping
+
+  If u want to check server memory performance 
+
+  #ansible all -m shell -a "free -m"
+  hear
+  -a for append the command
+
+  From how much time server is up and running 
+  #ansible all -m shell -a "uptime"
+
+
+  If u want to check how many module r available
+  #ansible-doc -l
+  
+  For particular module:
+  #ansible-doc -l | grep aws
+
+  for reading inventory in yaml
+  ansible-inventory --list -y
+
+
+  some basic module name:
+  -m shell 
+  -m copy
+  -m ping
+  -m setup
+  -m command
+  -m file
+  -m package
+  -m service
+  -m lineinfile
+  -m notify
+  -m get_url
+  -m unarchive
+  -m user
+  -m group
+  -m apt
+  -m yum
+
+
+  To transfer a file using ansible 
+  Module name : copy
+  #ansible all -m copy -a "src=source path dest=dest path"
+  Ex:
+  #ansible all -m copy -a "src=./hosts dest=/tmp"
+
+  To download the file from client 
+  #ansible all -m fetch -a "src=/client path dest=master path"
+
+
+  How to create a file or directory using ansible 
+  Module : file
+
+  #ansible all -m file -a "path=/tmp/new.txt state=touch" 
+
+  How to install package using ansible to all Client machine
+
+  Module : Yum
+  #ansible all -m yum -a " name=httpd state=present or latest"
+
+  To become root user in ansible type -b in last 
+  Ex:
+#ansible all -m yum -a "name=httpd state=present or latest" -b
+
+---
+ - hosts: all
+   become: yes
+   tasks:
+   - yum: name=php state=latest
+ 
+ - hosts: all
+   become: yes
+   tasks:
+   - yum: name=php state=latest 
+
+---
+ - hosts: all
+   become: true
+   tasks:
+    - name: install apache2 package
+      package: name=apache2 state=latest update_cache=yes
+    
+    - name: Copy web pages
+      copy: src=index.html dest=/var/www/html owner=root group=root mode='0777' 
+
+    - name: start the service
+      service: name=apache2 state=started enabled=yes  
+
+
+if you want to insall multiple pkg using loop then
+
+---
+- hosts: all
+   become: true
+   tasks:
+    - name: install apache2 package
+      package: name={{ item }} state=latest update_cache=yes
+      loop: [ 'apache2' , 'vim' , 'git' ]
+
+    - name: Copy web pages
+      copy: src=index.html dest=/var/www/html owner=root group=root mode='0777' 
+
+    - name: start the service
+      service: name=apache2 state=started enabled=yes  
+...
+some basic command to varify tags, task, syntax check
+ansible-playbook <plabook_name> --syntax-check
+
+ansible-playbook <plabook_name> --list-task
+
+ansible-playbook <plabook_name> --list-tags
+
+if you don't want to run every task and want to run specific task in the playbook the you can tag your task with some name and run playbook
+
+---
+- hosts: all
+   become: true
+   tasks:
+    - name: install apache2 package
+      package: name={{ item }} state=latest update_cache=yes
+      loop: [ 'apache2' , 'vim' , 'git' ]
+      tags: [ 'setup' ]
+
+    - name: Copy web pages
+      copy: src=index.html dest=/var/www/html owner=root group=root mode='0777' 
+      tags: [ 'update','sync' ]         #{you can give multiple tags}
+
+    - name: start the service
+      service: name=apache2 state=started enabled=yes
+      tags: [ 'servicestart' ]
+
+ command to run perticular task
+ ansible-playbook <playbook_namme> --tags=<tag_name>
+
+ if you want to change something in configuration file like port number the you have to use (lineinfile) module
+---
+- hosts: all
+   become: true
+   tasks:
+    - name: install apache2 package
+      package: name={{ item }} state=latest update_cache=yes
+      loop: [ 'apache2' , 'vim' , 'git' ]
+      tags: [ 'setup' ]
+
+    - name: Copy web pages
+      copy: src=index.html dest=/var/www/html owner=root group=root mode='0777' 
+      tags: [ 'update', 'sync' ]         #{you can give multiple tags}
+
+    - name: start the service
+      service: name=apache2 state=started enabled=yes
+      tags: [ 'servicestart' ]
+
+    - name: Changing Port number
+  lineinfile:                          #(if u want to change in conf.file)
+      path: /etc/apache2/ports.conf      #(default path for conf.file for apache2)
+      regexp: '^Listen '                 #(regular expration)
+      insertafter: '^#Listen '         #(to remove)
+      line: Listen 83                    #(to add Listen port 83)
+  notify: Restart apache2 
+    tags: [ 'update', 'sync']  
+
+    handlers:                            #(this handlers will be called upon notify and notify module will be always monitoring checksum of this perticular file )
+    - name: Restart apache2 
+      service: name=apache2 status=restarted
+
