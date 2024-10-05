@@ -17,7 +17,7 @@
   #ansible master will have INVENTORY file where all client ID address is mentioned for communication with client server
   # Path = /etc/ansible/
 
-  How to install ansible:
+  How to install ansible aws amazon-linux:
 
   #Ansible is written in python so check first python is install or not 
 
@@ -99,6 +99,17 @@
 
 
   #ansible  <target> -m <ping>
+
+
+
+  # how to install ansible on ubuntu 
+
+  # sudo apt-get update -y 
+  # apt-get install software-properties-common -y
+  # apt-add-repository ppa:ansible/ansible 
+  # apt-get update -y
+  # apt-get install ansible -y
+
 
   Hear
   -m for module
