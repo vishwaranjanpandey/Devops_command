@@ -1,0 +1,432 @@
+#Introduction to Linux Commands
+Getting information
+Return your user name:
+ 1 . whoami
+
+ Return your user and group id:
+ 1 . id
+
+ Return operating system name, username, and other info:
+ 1 . uname -a
+
+ Display reference manual for a command:
+ 1 . man top
+
+ List available man pages, including a brief description for each command:
+ 1 . man -k .
+
+ Get help on any command (for eg: curl):
+ 1 . curl --help
+
+ This provides a brief overview of the curl command's usage and options.
+
+ Return the current date and time:
+ 1 . date
+ 
+ Navigating and working with directories
+ List files and directories by date, newest to last:
+ 1 . ls -lrt
+ 
+ Find files in directory tree that end in .sh:
+ 1 . find -name \'\*.sh\'
+
+ Return path to present working directory:
+ 1 . pwd
+
+ Make a new directory:
+ 1 . mkdir new_folder
+
+ Change the current directory:
+ Up one level:
+
+ 1 . cd ../
+ 
+ To home:
+
+ 1 . cd ~` or `cd
+
+ To some other directory: cd path_to_directory
+
+ Remove directory verbosely:
+ 1 . rmdir temp_directory -v
+ 
+ Monitoring system performance and status
+ List selection of/all running processes and their PIDs:
+ 1 . ps
+
+ 1 . ps -e
+ 
+ Display resource usage:
+ 1 . top
+
+ List mounted file systems and usage:
+ 1 . df
+
+ Creating, copying, moving, and deleting files:
+ Create an empty file or update existing file's timestamp:
+ 1 . touch a_new_file.txt
+
+ Copy a file:
+ 1 . cp file.txt new_path/new_name.txt
+
+ Change file name or path:
+ 1 . mv this_file.txt that_path/that_file.txt
+
+ Remove a file verbosely:
+ 1 . rm this_old_file.txt -v
+
+ Working with file permissions
+ Change/modify file permissions to 'execute' for all users:
+ 1 . chmod  +x  my_script.sh
+
+ Change/modify file permissions to 'execute' only for you, the current user:
+ 1 . chmod u+x my_file.txt
+
+ Remove 'read' permissions from group and other users:
+ 1 . chmod go-r
+
+ Displaying file and string contents
+ Display file contents:
+ 1 . cat my_shell_script.sh
+
+ Display file contents page-by-page:
+ 1 . more ReadMe.txt
+ 
+ Display first 10 lines of file:
+ 1 . head -10 data_table.csv
+
+ Display last 10 lines of file:
+ 1 . tail -10 data_table.csv
+
+ Display string or variable value:
+ 1 . echo "I am not a robot"  
+ 2 . echo "I am $USERNAME"
+
+ Basic text wrangling
+ Sorting lines and dropping duplicates:
+ Sort and display lines of file alphanumerically:
+ 1 . sort text_file.txt
+
+ In reverse order:
+ 1 . sort -r text_file.txt
+
+ Drop consecutive duplicated lines and display result:
+ 1 . uniq list_with_duplicated_lines.txt
+
+ Displaying basic stats:
+ Display the count of lines, words, or characters in a file:
+ Lines:
+
+ 1 . wc  -l table_of_data.csv
+ 
+ Words:
+
+ 1 . wc  -w my_essay.txt
+
+ Characters:
+
+ 1 . wc  -m some_document.txt
+
+ Extracting lines of text containing a pattern:
+ Some frequently used options for grep:
+
+ Option	Description
+ -n	Print line numbers along with matching lines
+ -c	Get the count of matching lines
+ -i	Ignore the case of the text while matching
+ -v	Print all lines which do not contain the pattern
+ -w	Match only if the pattern matches whole words
+ Extract lines containing the word "hello", case insensitive and whole words only:
+ 1 . grep  -iw hello  a_bunch_of_hellos.txt
+
+ Extract lines containing the pattern "hello" from all files in the current directory ending in .txt:
+ 1 . grep  -l hello  *.txt
+
+ Merge two or more files line-by-line, aligned as columns:
+ Suppose you have three files containing the first and last names of your customers, plus their phone numbers.
+
+ Use paste to align file contents into a Tab-delimited table, one row for each customer:
+ 1 . paste first_name.txt last_name.text phone_number.txt
+
+ Use a comma as a delimiter instead of the default Tab delimiter:
+ 1 . paste -d "," first_name.txt last_name.text phone_number.txt
+
+ Use the cut command to extract a column from a table-like file:
+ Suppose you have a text file whos rows consist of first and last names of customers, delimited by a comma.
+
+ Extract first names, line-by-line:
+ 1 . cut -d "," -f 1 names.csv
+
+ Extract the second to fifth characters (bytes) from each line of a file:
+ 1 . cut -b 2-5 my_text_file.txt
+
+ Extract the characters (bytes) from each line of a file, starting from the 10th byte to the end of the line:
+ 1 . cut -b 10- my_text_file.txt
+
+ Compression and archiving
+ Archive a set of files:
+ 1 . tar -cvf my_archive.tar.gz file1 file2 file3
+
+ Compress a set of files:
+ 1 . zip my_zipped_files.zip file1 file2   
+ 2 . zip my_zipped_folders.zip directory1 directory2
+
+ Extract files from a compressed zip archive:
+ 1 . unzip my_zipped_file.zip 
+ 2 . unzip my_zipped_file.zip -d extract_to_this_direcory
+
+ Working with networking commands
+ Print hostname:
+ 1 . hostname 
+
+ Send packets to URL and print response:
+ 1 . ping  www.google.com
+
+ Display or configure system network interfaces:
+ 1 . ifconfig   
+ 2 . ip 
+
+ Display contents of file at a URL:
+ 1 . curl  <url>
+
+ Download file from a URL:
+ 1 . wget  <url>
+
+ Some Basic command:
+  1. hostname                                           ( tell u what is your machine name)
+  2. hostnamectl                                        ( to check about machine configuration)
+  3. apt-get remove <pkg name>                          ( to uninstall pkg)
+  4. netstat -antup | grep 8080
+  5. apt list --installed jenkins                       ( to list out the installed pkg)
+  6. hostname -i                                        ( will tell u ip address)
+  7. <commands>;time ex: ls -la;time                    (tell u how much time it will take to execute command)
+  8.  uname                                             (which kind of os it is )
+  9.  uname -m                                          (will tell u about architecture )
+  10. uname -a                                          ( will tell u about all)
+  11. touch 1\ 2\ 3                                     (combine all agrunment and make it single )
+  12. source  <filename>                                (to run a normal file as script on temperory basis)
+  13. STDIN (1) STDOUT(2)  ex: ls > /tmp/1.txt 2>&1     (it will list the file and apend to tmp folder) 
+  14. which <pkg name or command name>                  (to show where is pkg installed)
+  15. echo hello | cut -c1                              (cut column1)
+  16. echo "hello student-hi" | cut -d " " -f1                              o/p: hello
+  17. echo "hello student-hi" | cut -d "-" -f1                              o/p: hello student
+  18. echo "hello student-hi" | cut -d "-" -f2                              o/p: hi
+  19. echo "hello student-id" | cut -f1                                     o/p: hello student-id 
+  20. echo "hello student-id  | tr "-" "@"                                  o/p: hello student@id       truncate/translate   (to change/flip )
+  21. echo "hello        student-id" | tr -s " "                            o/p: hello student-id        -s for shrink 
+
+  General Search Commands - grep, find, cut, awk, sed 
+  all these command will helps you to search faster.
+ 
+ Syntex of find command 
+
+ find <path> -type <f|d> -name "pattern" -print
+ find <path> -name "pattern" -exec <cmd> {} \;       ....hear {} is for all the data return form part1 goes input into this {} and  and in find we use ; and to escape 'meta-char ;' we use \
+ ; used coz we are give two command inconjetion of one single command 
+
+  22. find ./networking/ -name main.tf                                      o/p: find main.tf is present or not in pwd
+
+  23. find ./ -name "*.txt" -exec rm -i {} \;                               o/p: find all .txt file and delete ... i is for intractive so it will ask before deleting
+      find ./ -name "*.txt" -exec rm -rf {} \;
+      find ./ -type f -name "*.txt" -exec rm {} \;
+                     or
+  24. find ./ -name "*.txt" | rm -rf {1..10}.txt                            o/p: find all .txt file and delete
+  25. find / -name test.txt;find /opt /usr /var /home -name ".txt" -type f  o/p: fist find test.txt under /root then find all .txt file under /opt /usr/ /var /home and type is file not directory
+  26. find . -type f -not -name "*.html" .                                  o/p: find all file except index.html
+
+  27. ls -l | awk '{ print }'                       o/p: print all 
+  28. ls -la | awk '{ print $1,$3}'
+  29. awk -F: '{print $6,$7,$8 }' /etc/passwd       o/p: -F is for delimiter and print 6 7 8 column 
+                   or
+  30. cat /etc/passwd |awk -F: '{print $6,$7,$8 }'   
+  31. awk 'NR==3,NR==5 {print NR, $0}' terraform.tfvars     o/p: display line from 3rd to 5th (if u want to print perticular row then use NR)               
+  32. awk '{print NR $0}' terraform.tfvars                   o/p: display line number 
+  33. awk '{print $1, $NF}' terraform.tfvars                 o/p: disply last field
+  
+       cat terraform.tfvars
+        vpc_cidr             = "10.0.0.0/16"
+        vpc_name             = "dev_project_vpc"
+        cidr_public_subnet   = ["10.0.1.0/24", "10.0.2.0/24"]
+        cidr_private_subnet  = ["10.0.3.0/24", "10.0.4.0/24"]
+        ap_availability_zone = ["ap-south-1a", "ap-south-1b"]
+
+        ami_id = "ami-078264b8ba71bc45e"
+        instance_type = "t2.micro
+  34. awk '{print NR "- " $1}'  terraform.tfvars       
+    o/p: 
+    1- vpc_cidr
+    2- vpc_name
+    3- cidr_public_subnet
+    4- cidr_private_subnet
+    5- ap_availability_zone
+    6- 
+    7- ami_id
+    8- instance_type
+  35. awk 'BEGIN { for(i=1;i<=10;i++) print "square of",i,"is",i*i;}'
+  36. awk 'END {print $0}'  terraform.tfvars                 o/p:  Display last line 
+
+sort (-r/-n/-k num/u) :  sort is used to order your data either in ascending or descending
+  
+  37. cat abc.txt | sort                o/p: sort the data and display only
+  38. sort abc.txt                      o/p: sort the data and display only
+  39. sort -r abc.txt > output.txt      o/p: reverse order alfabetical first and then numericals and save the file in output.txt
+  40. sort -n abc.txt                   o/p: sort number first
+  41. sort -u abc.txt                   o/p: remove the duplicated
+  42. sort -k4 abc.txt                  o/p: sort perticular column 
+  
+
+sed : stream Editor like vim... sed is another search command like find and grep 
+  43. sed 's/hello/hi/' shortfile.txt               o/p: replace hello with hi in first column only and then display  
+  44. sed 's/hello/hi/g' shortfile.txt              o/p: replace hello with hi everywhere    -g: globally  s = s use to replace how the command know that we have to replace words ..that is the region we use s 
+  45. sed '2,5 s/hello/hi/g' shortfile.txt          o/p: replace words within line 2 to 5 
+  46. sed -n '2,4p' <sourcefile>                    o/p: print line 5 to 10         -n: number and p: print ( if u want to print some perticular line so ui can use sed command reather then head and tail and cat )
+  47. sed -n '2,10!p' <sourcefile>                  o/p: print all the line except 5 to 10
+  48. sed -n -e '5,10p' -e '12,15p' <sourcefile>    o/p: display line 5 to 10 , 12 to 15     -e: expression ..like command first execute some command 
+  49. sed -e 's/hello/hi/g' -e 's/is/are/g' one.txt o/p: multiple expression
+  50. sed '5d' <sourcefile>                         o/p: delete 5th line
+  51. sed '5,10d' <sourcefile>                      o/p: delete range from 5 to 10
+  52. sed '5,10!d' <sourcefile>                     o/p: delete all line except 5 to 10
+  53. sed '/abc/d' <sourcefile>                     o/p: delete pattern matching    //:used for pattern matching
+
+
+grep | regular expression 
+grep <textpattern>  <sourcefile>
+
+vim shortfile.txt
+  54. grep hello shortfile.txt                      o/p: search hello from file sourcefile
+  55. grep -n hello shortfile.txt                   o/p: search with line number 
+  56. grep -n ".$" shortfile.txt                    o/p: search all line end with .
+  57. grep -n "^hello" shortfile.txt                o/p: search all line start with hello 
+  58. grep -v "abc" shortfile.txt                   o/p: except abc display all line   -v: neglect perticular word
+  59. grep "^$" shortfile.txt                       o/p: to find blank line ..start with nothing^ and end with nothing$
+  60. grep -n "" <filename>                         o/p: display contents with numbers
+  61. grep -n -A 2 <words> <filename>               o/p: print 2 line more after occurance pattern'words' 
+  62. grep -n -B 2 <words> <filename>               o/p: print 2 line before occurance pattern 'words'
+  63. grep -n "^[a-z]" <filename>                   o/p: print all line Words start with [a-z]
+  64. grep -n "^[a-z|A-Z]" <filename>               o/p: print all line Words start with [a-z or A-Z] 
+
+egrep:::  extended version of grep (advance version of grep)  you can use same as grep
+  65. egrep "word1|word2|word3" <filename>          o/p: search word1 or word2 or word3 
+  
+Process : do something " we will be using in debugging"
+every program running in linux is process 
+
+  65. who                   o/p: to check who is log-in 
+  66. ps                    o/p: anything you trigger will display with ps command 
+  
+  PID  PPID   UID TTY      COMMAND
+  771   767   501 ttys001  /bin/bash --init-file /private/var/folders/76/4vpphs7j4191pwd4z5yrlj
+ 2068   771   501 ttys001  find / -name *.txt
+ 2153   771   501 ttys001  find / -name test.txt
+ 2205   771   501 ttys001  find / -name test.txt
+ 5263   771   501 ttys001  awk -F: {print $1}
+ 9040   771   501 ttys001  sed
+17011 17010   501 ttys003  -bash  
+
+PID: process ID,
+PPID: parent Process ID,
+TTY: terminal name(terminal session that triggered process)
+UID: user id
+
+every process always exit with as exit code between 0 and 255
+0: indicate success
+Non Zero: value indecate different type of error 
+
+  67. ps -e               o/p: all process display system trigger and user trigger
+  68. ps -ef              o/p: it will display more number od column
+  69. ps aux              o/p: help to debugging
+  70. top                 o/p: it will tell how many hour system is up and running cpu uses, memory uses
+  71. htop                o/p: human readable 
+  72. uptime              o/p: load average & system uptime 
+  73. netstat -tupln|grep LISTEN  
+  74. free -h 
+
+
+
+
+
+
+
+
+
+  Extract fields from lines of text
+
+  The cut command can also be used to extract a field from a delimited file.
+  To demonstrate this, start by downloading and taking a look at the following comma-separated file:
+
+  wget https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-LX0117EN-SkillsNetwork/labs/v4_new_content/labs/names_and_numbers.csv
+  cat names_and_numbers.csv
+  Copied!
+  Now you can extract just the phone numbers for each person listed in the file using the -d (delimiter) and f (field) options as follows:
+
+  cut -d "," -f2 names_and_numbers.csv
+  Copied!
+  -d "," tells the command that the delimiter is a comma, and -f2 tells it to extract the second field.
+
+  Merge text files line-by-line, aligned as columns
+  paste 
+
+  Use the paste command to merge lines of multiple files together.
+
+  Download the following file:
+
+  wget https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-LX0117EN-SkillsNetwork/labs/module%201/zoo_ages.txt
+  Copied!
+  Then use the paste command to view the two files merged together, line-by-line, as columns delimited by a Tab character:
+
+  paste zoo.txt zoo_ages.txt
+  Copied!
+  Try changing the delimiter. Instead of the default Tab delimiter, you can specify a comma , as follows:
+
+  paste -d "," zoo.txt zoo_ages.txt
+
+
+
+  Linux Networking command...... 
+  To view the current hostname, run the command below:
+  hostname  
+  You can use the -i option to view the IP address of the host:
+  hostname -i
+  To display the configuration of all network interfaces of your system, enter:
+  ifconfig 
+  Test connectivity to a host
+  ping www.google.com
+  If you want to ping only a limited number of times, use -c option.
+  ping -c 5 www.google.com
+
+  Transfer data from a server
+  You can use curl to access the file at the following URL and display the file's contents on your screen:
+  curl https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0250EN-SkillsNetwork/labs/Bash%20Scripting/usdoi.txt
+
+  One unique feature of wget is that it can recursively download files at a URL.
+  wget https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0250EN-SkillsNetwork/labs/Bash%20Scripting/usdoi.txt
+
+
+  File and folder archiving and compression............
+
+  The tar command allows you to pack multiple files and directories into a single archive file.
+
+  The following command creates an archive of the entire /bin directory and writes the archive to a single file named bin.tar.
+
+  The options used are as follows:
+
+  Option	Description
+  -c	Create new archive file
+  -v	Verbosely list files processed
+  -f	Archive file name
+
+  tar -cvf bin.tar /bin
+  To see the list of files in the archive, use the -t option:
+  tar -tvf bin.tar
+  
+  To untar the archive or extract files from the archive, use the -x option:
+  tar -xvf bin.tar
+
+  Package and compress archive files
+  The zip command allows you to compress files.
+
+  The following command creates a zip file named config.zip consisting of all the files with extension .conf in the /etc directory.
+  zip config.zip /etc/*.conf
+
+
+

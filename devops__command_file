@@ -127,7 +127,7 @@ git remote --staged     ( remove from cache area )
 
 CASE 3:
 
-if we added changes to staging aread (didn't commit) and again we done some changes in staging area and that staging file
+if we added changes to staging area (didn't commit) and again we done some changes in staging area and that staging file
 is ready to commit and ready to add 
 
 git restore --worktree <file name>    (restore the changes form staging area )
