@@ -36,7 +36,7 @@ Collection Variable
 As the name suggests Simple Values variables are which hold only a single value. Here the types of Simple Value variables -
 
 1. string
-2. umber
+2. number
 3. bool
 
 1.2 Collection Variable
