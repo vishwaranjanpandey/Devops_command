@@ -135,9 +135,12 @@ git restore --worktree <file name>    (restore the changes form staging area )
 CASE 4:
 if we did commit wrong files
 
-git reset --soft HEAD^  (go back to 1 previous commit with deleting changes)
-git reset --hard HEAD^ (go back to 1 previous commit with deleting all changes)
+Git reset moves the branch pointer to a different commit, affecting the branch's history.
 
+git reset --soft HEAD^  (go back to 1 previous commit with deleting changes....it will undo the changes and will go back to staging area )
+git reset --hard HEAD^ (go back to 1 previous commit with deleting all changes....it will undo the changes and deleting all the all the changes and commit )
+
+Git revert creates a new commit to undo changes while preserving history
 
 if you want to check latest changes previous version of the file >>>>>>>>>>
 
